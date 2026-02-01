@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine?</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ffe6eb, #ffd1dc);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  overflow: hidden;
+}
+
+.box {
+  background: white;
+  padding: 35px 40px;
+  border-radius: 18px;
+  box-shadow: 0 25px 50px rgba(230, 0, 92, 0.2);
+  text-align: center;
+}
+
+h1 {
+  color: #e6005c;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 14px 32px;
+  font-size: 18px;
+  margin: 12px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#yes {
+  background: linear-gradient(135deg, #ff4d79, #ff0066);
+  color: white;
+}
+
+#no {
+  background: #999;
+  color: white;
+  position: absolute;
+  transition: left 0.15s ease, top 0.15s ease;
+}
+
+#gif {
+  display: none;
+  margin-top: 20px;
+}
+
+#gif img {
+  width: 240px;
+  border-radius: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h1>Will you be my Valentine? ❤️</h1>
+  <button id="yes">Yes</button>
+  <button id="no">No</button>
+
+  <div id="gif">
+    <h2>Nah I'm good, nice try tho. Better luck next time!</h2>
+    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXAzeDQybWU0M3V1bDcxMTFuN3hjYWh4bG1yaWp6aXNqb3I2aWp1diZlcD12MV9naWZzX3NlYXJjaCZjdD1n/5ICjNnlaCFkCJQAPJv/giphy.gif">
+  </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const gif = document.getElementById("gif");
+
+function moveButton() {
+  const padding = 20;
+  const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+  const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+// Desktop
+noBtn.addEventListener("mouseenter", moveButton);
+
+// Mobile
+noBtn.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+  moveButton();
+});
+
+yesBtn.addEventListener("click", () => {
+  gif.style.display = "block";
+});
+</script>
+
+</body>
+</html>
